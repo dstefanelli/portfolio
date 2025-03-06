@@ -6,7 +6,19 @@ import robotsTxt from "astro-robots-txt"
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), robotsTxt()],
-  site: 'https://portfolio.dev/',
+  site: 'https://dstefanelli.dev/',
+  integrations: [
+    robotsTxt({
+      sitemap: false,
+      policy: [
+        {
+          userAgent: '*',
+          disallow: '/',
+        },
+      ],
+    }),
+  ],
+  output: "static",
   // vite: {
   //   server: {
   //     host: "0.0.0.0",
