@@ -1,25 +1,25 @@
 ---
- const personalImageAlt = "Diego Stefanelli"
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const personalImageAlt = "Diego Stefanelli";
 ---
 
-<article class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row">
-  <div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-  >
-    <p>
-      Me llamo Diego Stefanelli. Empecé en el desarrollo frontend hace 12 años. Actualmente estoy <strong
-        >especializado en trabajar con equipos de desarrollo en multinacionales utilizando las tecnologías React y Vue</strong
-      >. He trabajado en proyectos de todo tipo, desde aplicaciones de gestión de candidatos hasta encuestas para empresas. 
-      Con experiencia tanto en GitLab como GitHub, y test unitarios con Vitest y Jest. He trabajado a la par con equipos de diseño y de producto, 
-      y he tenido la oportunidad de trabajar con equipos de desarrollo en diferentes países.
-    </p>
+<article
+  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
+>
+  <p
+    class="[&>p]:mb-4 [&>strong]:text-yellow-500 dark:[&>strong]:text-yellow-100 [&>strong]:font-normal [&>strong]:font-mono text-pretty order-2 md:order-1"
+    set:html={t("about.description")}
+  />
 
-    <p>
-      Personalmente me gusta pasar tiempo al aire libre, viajo siempre que puedo y me encanta la fotografía. Soy un apasionado de la tecnología y siempre estoy buscando aprender algo nuevo. 
-      También me gusta andar en bicicleta y hacer senderismo. Las motos son otro de mis pasatiempos favoritos.
-    </p>
-  </div>
-
-  <img width="200" height="200" src="/me.webp" alt={personalImageAlt} class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20 " style="object-position: 50% 50%">
-
+  <img
+    width="200"
+    height="200"
+    src="/me.webp"
+    alt={personalImageAlt}
+    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
+    style="object-position: 50% 50%"
+  />
 </article>

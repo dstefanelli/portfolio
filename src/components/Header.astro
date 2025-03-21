@@ -9,17 +9,17 @@ const navItems = [
   {
     title: t("nav.experience"),
     label: "experiencia",
-    url: "/#experiencia",
+    url: lang !== "en" ? `/${lang}/#experiencia` : "/#experiencia",
   },
   // {
   //   title: t("nav.projects"),
   //   label: "proyectos",
-  //   url: "/#proyectos",
+  //   url: lang !== "en" ? `/${lang}/#proyectos` : "/#proyectos",
   // },
   {
     title: t("nav.about"),
     label: "sobre-mi",
-    url: "/#sobre-mi",
+    url: lang !== "en" ? `/${lang}/#sobre-mi` : "/#sobre-mi",
   },
   {
     title: t("nav.contact"),
