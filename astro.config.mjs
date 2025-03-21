@@ -15,4 +15,11 @@ export default defineConfig({
   }),],
   site: 'https://dstefanelli.dev/',
   output: "static",
+  i18n: {
+    defaultLocale: "en",
+    locales: ["es", "en"],
+    routing: {
+        prefixDefaultLocale: false
+    }
+  }
 })
