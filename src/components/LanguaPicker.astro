@@ -6,9 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 ---
 
-<ul
-  class="absolute bg-white/90 postion-absolute px-2 text-gray-600 top-15 top-8"
->
+<ul class="language-menu">
   {
     Object.entries(languages).map(([lang, label]) => (
       <li>
@@ -17,3 +15,34 @@ const translatePath = useTranslatedPath(lang);
     ))
   }
 </ul>
+<style>
+  .language-menu {
+    align-items: center;
+    background-color: #f5c95a;
+    color: #13151a;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 12%;
+    width: 42px;
+    li {
+      width: 42px;
+      text-align: center;
+      padding: 8px;
+    }
+    li:last-child {
+      border-top: 1px solid #13151a;
+    }
+  }
+
+  :is(.dark .language-menu) {
+    background-color: #25334f;
+    color: #ffffff;
+    li:last-child {
+      border-top-color: #ffffff;
+    }
+  }
+</style>
