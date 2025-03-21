@@ -10,6 +10,10 @@ import ProfileCheck from "@/components/icons/ProfileCheck.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import TitleSection from "@/components/TitleSection.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout
@@ -21,25 +25,25 @@ import TitleSection from "@/components/TitleSection.astro";
       <Hero />
     </SectionContainer>
     <div class="space-y-24">
-      <SectionContainer id="experiencia">
+      <SectionContainer id="experience">
         <TitleSection>
           <Briefcase class="size-8" />
-          Experiencia laboral
+          {t("page.experience_title")}
         </TitleSection>
         <Experience />
       </SectionContainer>
 
-      <!-- <SectionContainer id="proyectos">
+      <!-- <SectionContainer id="projects">
         <TitleSection>
           <CodeIcon class="size-7" />
           Proyectos
         </TitleSection>
         <Projects />
       </SectionContainer> -->
-      <SectionContainer id="sobre-mi">
+      <SectionContainer id="about">
         <TitleSection>
           <ProfileCheck class="size-8" />
-          Sobre mí
+          {t("page.about_title")}
         </TitleSection>
         <AboutMe />
       </SectionContainer>

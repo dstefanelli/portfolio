@@ -1,29 +1,29 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import ExperienceItem from "./ExperienceItem.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const EXPERIENCE = [
   {
-    date: "Agosto 2019 - Febrero 2025",
-    title: "Desarrollador Frontend",
+    date: t("experience.job_one_date"),
+    title: t("experience.job_title"),
     company: "Perceptyx",
-    description:
-      "Desarrollo frontend en el servicio de encuestas empresariales y planes de acción, colaborando con un equipo para ofrecer soluciones a clientes globales. Trabajo con Vue y React, integrando APIs REST para optimizar la experiencia del usuario.",
+    description: t("experience.job_one_description"),
   },
   {
-    date: "Junio 2017 - Julio 2019",
-    title: "Desarrollador Frontend",
+    date: t("experience.job_two_date"),
+    title: t("experience.job_title"),
     company: "Red Arbor",
-    description:
-      "Participaba en el desarrollo de software para la gestión de candidatos y empleados en empresas de Latinoamérica. Desarrollo en .NET y Razor con Vanilla JavaScript y Bootstrap en el frontend.",
+    description: t("experience.job_two_description"),
   },
   {
-    date: "Noviembre 2014 - Febrero 2017",
-    title: "Desarrollador Frontend",
+    date: t("experience.job_three_date"),
+    title: t("experience.job_title"),
     company: "Accenture",
-    description:
-      "Trabajaba en un equipo dentro de la consultora Accenture, desarrollando aplicaciones para clientes internacionales en entornos .NET, incluyendo plataformas como Sitecore.",
+    description: t("experience.job_three_description"),
   },
 ];
-
 ---
 
 <ol class="relative mt-16">
