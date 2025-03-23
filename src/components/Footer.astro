@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
+const isProd = import.meta.env.ASTRO_NODE_ENV === "production";
 ---
 
 <footer
@@ -13,16 +14,14 @@ const currentYear = new Date().getFullYear();
     class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
   >
     <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90"
-      >© {currentYear}
-      <a href="https://dstefanelli.dev/" class="hover:underline">dstefanelli</a
-      >. {t("footer.rights")}
+      >© {currentYear} dstefanelli. {t("footer.rights")}
     </span>
     <ul
       class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
     >
       <li>
         <a
-          id="contacto"
+          id="footer-contact"
           href="mailto:die.stefanelli@gmail.com"
           class="hover:underline">{t("footer.contact")}</a
         >
@@ -30,3 +29,12 @@ const currentYear = new Date().getFullYear();
     </ul>
   </div>
 </footer>
+{isProd &&
+  <script is:inline>
+    document.addEventListener("astro:page-load", () => {
+      const contactButton = document.getElementById("footer-contact");
+      if (contactButton)
+        contactButton.onclick = () => umami?.track("Contact button");
+    });
+  </script>
+}

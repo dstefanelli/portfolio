@@ -12,8 +12,12 @@ interface Props {
   description: string;
 }
 
-const lang = getLangFromUrl(Astro.url);
 const { description, title } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const isProd = import.meta.env.ASTRO_NODE_ENV === "production";
+const analyticUrl = import.meta.env.PUBLIC_UMAMI_URL;
+const websiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
 ---
 
 <!doctype html>
@@ -26,7 +30,15 @@ const { description, title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script defer src="https://umami-9kzl.onrender.com/script.js" data-website-id="8805bfe4-3346-4300-9c18-d7f132273a72"></script>
+    {
+      isProd && (
+        <script
+          defer
+          src={analyticUrl}
+          data-website-id={websiteId}
+        />
+      )
+    }
     <ViewTransitions />
   </head>
 
@@ -117,5 +129,27 @@ const { description, title } = Astro.props;
         }
       }
     </style>
+    {isProd &&
+     <script>
+      document.addEventListener("astro:page-load", () => {
+        const contactEmailButtons = document.querySelectorAll(".contact-email");
+        const contactLinkedInButtons =
+          document.querySelectorAll(".contact-linkedin");
+
+        contactEmailButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            umami?.track("Contact Email");
+          });
+        });
+
+        contactLinkedInButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            umami?.track("Contact LinkedIn");
+          });
+        });
+      });
+    </script>
+    }
+   
   </body>
 </html>

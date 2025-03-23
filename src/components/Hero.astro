@@ -21,7 +21,7 @@ const t = useTranslations(lang);
       href="https://linkedin.com/in/diegostefanelli"
       target="_blank"
       rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
+      class="contact-linkedin flex items-center transition md:justify-center md:hover:scale-105"
     >
       <Badge>{t("hero.badge")}</Badge>
     </a>
@@ -37,11 +37,14 @@ const t = useTranslations(lang);
     set:html={t("hero.description")}
   />
   <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:die.stefanelli@gmail.com">
+    <SocialPill type="contact-email" href="mailto:die.stefanelli@gmail.com">
       <MailIcon class="size-4" />
       {t("hero.contact")}
     </SocialPill>
-    <SocialPill href="https://linkedin.com/in/diegostefanelli">
+    <SocialPill
+      type="contact-linkedin"
+      href="https://linkedin.com/in/diegostefanelli"
+    >
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
